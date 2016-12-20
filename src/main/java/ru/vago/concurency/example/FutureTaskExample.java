@@ -12,9 +12,9 @@ public class FutureTaskExample
         ExecutorService executorService = Executors.newFixedThreadPool(2);
         List<Future<Integer>> tasks = new ArrayList<>();
         tasks.add(executorService.submit(new IncrementFuture(1000)));
+        tasks.add(executorService.submit(new IncrementFuture(2000)));
         tasks.add(executorService.submit(new IncrementFuture(1000)));
-        tasks.add(executorService.submit(new IncrementFuture(1000)));
-        tasks.add(executorService.submit(new IncrementFuture(1000)));
+        tasks.add(executorService.submit(new IncrementFuture(4000)));
         int sum = 0;
         for (Future<Integer> task : tasks)
         {
@@ -37,7 +37,7 @@ public class FutureTaskExample
         {
             System.out.println("run task");
             Thread.sleep(sleep);
-            return 1;
+            return sleep;
         }
     }
 }
